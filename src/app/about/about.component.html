@@ -1,0 +1,48 @@
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Angular SSR (not really SSR yet), about</title>
+<meta
+  name="description"
+  content="Is not really SSR yet but hopefully Lorem ipsum sdgsdgdsalkjh sfgjgdgfghfhsd"
+/>
+<meta name="keywords" content="ssr, angular, SEO, hydration, prerender" />
+<meta
+  name="og:image"
+  content=" https://i.ytimg.com/vi/2tHozZWMm18/hqdefault.jpg"
+/> -->
+
+<div class="not-found">
+  <h1>Angular SSR In Depth 2</h1>
+
+  <img
+    class="course-image mat-elevation-z10"
+    src="https://angular-university.s3-us-west-1.amazonaws.com/course-images/angular-universal-course.jpg"
+  />
+
+  <h2>About this course</h2>
+  <p>Use Angular on the server too! Learn Angular Server-Side Rendering.</p>
+</div>
+<div class="container-fluid">
+  <ngx-slick-carousel class="slick-nav" [config]="slideConfig">
+    @for (product of products; track $index) {
+    <div ngxSlickItem class="slick-item">
+      <div class="product-card d-flex shadow mb-4">
+        <div class="cardtext text-left col-7">
+          <h3 class="font-weight-bold">{{ product.title }}</h3>
+          <p class="small">
+            {{ product.description }}
+          </p>
+        </div>
+        <div class="cardimage d-flex align-items-center col-5">
+          <img class="img-fluid" [src]="product.imgSrc" />
+        </div>
+      </div>
+      <div class="link-list text-left mx-2">
+        <p class="small">Celcom MEGA™. <a href="">Learn More ></a></p>
+        <p class="small">Celcom InternetGO™. <a href="">Learn More ></a></p>
+        <p class="small">Celcom Family™. <a href="">Learn More ></a></p>
+        <p class="small">Xpax Postpaid™. <a href="">Learn More ></a></p>
+      </div>
+    </div>
+    }
+  </ngx-slick-carousel>
+</div>

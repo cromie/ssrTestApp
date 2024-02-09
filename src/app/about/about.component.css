@@ -1,0 +1,98 @@
+.course-image {
+  max-width: 300px;
+  border-radius: 4px;
+}
+
+.not-found {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto";
+}
+
+.about button {
+  max-width: 100px;
+  margin-top: 30px;
+}
+
+.slick-item {
+  display: flex !important;
+  align-items: center;
+  /* margin: auto 8px; */
+  height: auto;
+}
+
+.slick-item.slick-current {
+  display: block !important;
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 24px;
+  width: 261px;
+  height: 145px;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.product-card:after {
+  content: "";
+  position: relative;
+  top: 100%;
+  left: -50%;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #fff;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.product-card .cardtext {
+  padding: 16px 8px 16px 16px;
+}
+
+.slick-slide.slick-current .product-card .cardtext {
+  color: #fff;
+}
+
+.slick-slide.slick-current .product-card {
+  background-color: #009bdf;
+}
+
+.slick-slide.slick-current .product-card:after {
+  border-top: 10px solid #009bdf;
+}
+
+.slick-slide .link-list {
+  height: 0 !important;
+  position: absolute;
+  z-index: -1;
+  transition: height 0.6s ease-out;
+  overflow: hidden;
+}
+
+.slick-slide.slick-current .link-list {
+  height: 124px !important;
+  position: relative;
+  transition: height 0.6s ease-in-out;
+}
+
+.product-card .cardimage img {
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.cardimage {
+  padding: 0;
+}
+
+.slick-track .slick-slide {
+  height: 100%;
+  background: #fff;
+  position: relative;
+  cursor: pointer;
+}
