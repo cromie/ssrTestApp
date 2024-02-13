@@ -1,33 +1,35 @@
 import {
+  AfterRenderPhase,
   AfterViewInit,
   Component,
   ElementRef,
   OnInit,
   ViewChild,
-} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { Course } from '../model/course';
-import { CoursesService } from '../services/courses.service';
+  afterNextRender,
+} from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatSort } from "@angular/material/sort";
+import { MatTableDataSource, MatTableModule } from "@angular/material/table";
+import { Course } from "../model/course";
+import { CoursesService } from "../services/courses.service";
 import {
   debounceTime,
   distinctUntilChanged,
   startWith,
   tap,
   delay,
-} from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
-import { Lesson } from '../model/lesson';
-import { Meta, Title } from '@angular/platform-browser';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { NgIf } from '@angular/common';
+} from "rxjs/operators";
+import { merge, fromEvent } from "rxjs";
+import { Lesson } from "../model/lesson";
+import { Meta, Title } from "@angular/platform-browser";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { NgIf } from "@angular/common";
 
 @Component({
-  selector: 'course',
-  templateUrl: './course.component.html',
-  styleUrls: ['./course.component.scss'],
+  selector: "course",
+  templateUrl: "./course.component.html",
+  styleUrls: ["./course.component.scss"],
   standalone: true,
   imports: [NgIf, MatProgressSpinnerModule, MatTableModule],
 })
@@ -36,34 +38,45 @@ export class CourseComponent implements OnInit {
 
   dataSource: MatTableDataSource<Lesson>;
 
-  displayedColumns = ['seqNo', 'description', 'duration'];
+  displayedColumns = ["seqNo", "description", "duration"];
 
   constructor(
     private route: ActivatedRoute,
     private coursesService: CoursesService,
     private meta: Meta
-  ) {}
+  ) {
+    afterNextRender(() => {
+      console.log(window.location.pathname, "afterNextRender path");
+    });
+  }
 
   ngOnInit() {
-    this.course = this.route.snapshot.data['course'];
+    this.course = this.route.snapshot.data["course"];
+
+    console.log("course", this.course);
 
     this.meta.updateTag({
-      name: 'title',
+      name: "title",
       content: this.course.description,
     });
 
     this.meta.updateTag({
-      name: 'og:title',
+      name: "og:title",
       content: this.course.description,
     });
 
     this.meta.updateTag({
-      name: 'description',
+      name: "description",
       content: this.course.longDescription,
     });
 
     this.meta.updateTag({
-      name: 'og:image',
+      name: "og:image",
+      image: this.course.iconUrl,
+    });
+
+    this.meta.updateTag({
+      name: "og:image:alt",
       image: this.course.iconUrl,
     });
 

@@ -1,34 +1,33 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { CourseComponent } from './course/course.component';
-import { CourseResolver } from './services/course.resolver';
-import { AboutComponent } from './about/about.component';
-import { homeResolver } from './home/home.resolver';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { HomeComponent } from "./home/home.component";
+import { CourseComponent } from "./course/course.component";
+import { CourseResolver } from "./services/course.resolver";
+import { AboutComponent } from "./about/about.component";
+import { homeResolver } from "./home/home.resolver";
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: "/",
     component: HomeComponent,
     resolve: {
       homeResolver,
     },
   },
   {
-    path: 'about',
+    path: "about",
     component: AboutComponent,
   },
   {
-    path: 'courses/:id',
+    path: "courses/:id",
     component: CourseComponent,
     resolve: {
       course: CourseResolver,
     },
   },
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'home',
+    path: "**",
+    redirectTo: "/",
   },
 ];
 
