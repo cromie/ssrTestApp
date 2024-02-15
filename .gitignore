@@ -1,2 +1,4 @@
 .dist/
 .angular/
+node_modules
+.serverless/
