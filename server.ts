@@ -35,7 +35,7 @@ export function app(): express.Express {
   server.get('*', (req, res, next) => {
     const { protocol, originalUrl, baseUrl, headers } = req;
 
-    console.log(`Rendering ${originalUrl}`);
+    console.log(`Rendering ${originalUrl}, baseUrl: ${baseUrl}, URL: ${protocol}://${headers.host}${originalUrl}`);
 
     commonEngine
       .render({

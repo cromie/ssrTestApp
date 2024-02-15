@@ -8,11 +8,8 @@ import { homeResolver } from "./home/home.resolver";
 
 const routes: Routes = [
   {
-    path: "/",
+    path: "",
     component: HomeComponent,
-    resolve: {
-      homeResolver,
-    },
   },
   {
     path: "about",
